@@ -11,21 +11,24 @@ const Timeline = ({ onEventClick }) => {
         const height = 150; 
         const margin = { top: 20, right: 20, bottom: 30, left: 50 };
 
-       
+        // Очищаем SVG перед созданием новой шкалы
         svg.selectAll("*").remove();
 
-     
+        // Создаем шкалу для оси X
         const x = d3.scaleLinear()
             .domain([1980, 2025])
             .range([margin.left, width - margin.right]);
 
-    
-        const xAxis = d3.axisBottom(x).ticks(10);
+        // Настраиваем ось X с форматированием года без запятых
+        const xAxis = d3.axisBottom(x)
+            .ticks(10)
+            .tickFormat(d3.format("d")); // Форматируем год как целое число
+
         svg.append("g")
             .attr("transform", `translate(0,${height - margin.bottom})`)
             .call(xAxis);
 
-    
+        // Добавляем точки (события) на шкалу
         svg.selectAll(".event")
             .data(events)
             .enter()
@@ -37,7 +40,7 @@ const Timeline = ({ onEventClick }) => {
             .attr("fill", "#007BFF")
             .on("click", (event, d) => onEventClick(d));
 
- 
+        // Добавляем подписи к точкам
         svg.selectAll(".label")
             .data(events)
             .enter()

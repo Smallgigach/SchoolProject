@@ -1,57 +1,110 @@
 body {
   font-family: Arial, sans-serif;
-  /* background-color: #f4f4f4; */
   color: #333;
   margin: 0;
-  padding: 20px;
-  
+  padding: 10px; /* Уменьшаем отступы для мобильных устройств */
+  background-image: url("https://media.licdn.com/dms/image/C4D12AQH8lSLwWaK2OA/article-cover_image-shrink_720_1280/0/1596751963248?e=2147483647&v=beta&t=gYpWdH_NxkIK-yMsTFVvI6EyKXS6HS3489Kf7AdHnH4");
+  background-attachment: fixed;
+  background-size: auto; /* Фон не растягивается, сохраняет оригинальный размер */
+  background-repeat: no-repeat; /* Фон не повторяется */
+  background-position: center; /* Фон центрируется */
+  width: 100%;
+  min-height: 100vh; /* Чтобы фон покрывал всю высоту экрана */
+  overflow: hidden; /* Отключает прокрутку вниз и вбок */
+  scrollbar-width: none; /* Скрывает scrollbar в Firefox */
+  -ms-overflow-style: none; /* Скрывает scrollbar в IE и Edge */
+}
 
+/* Скрываем scrollbar в Chrome, Safari и Opera */
+body::-webkit-scrollbar {
+  display: none;
 }
 
 .app {
   max-width: 800px;
+  width: 100%; /* Занимает всю доступную ширину */
   margin: 0 auto;
   text-align: center;
+  padding: 0 10px; /* Уменьшаем отступы для мобильных устройств */
 }
 
 h1 {
   color: #444;
-  margin-bottom: 20px;
+  margin-bottom: 15px; /* Уменьшаем отступ снизу */
+  font-size: 1.5em; /* Уменьшаем размер заголовка для мобильных устройств */
 }
 
 .event-details {
-  margin-top: 40px;
-  padding: 20px;
-  background-color: #fff;
+  margin-top: 15px; /* Уменьшаем отступ сверху */
+  padding: 15px; /* Уменьшаем отступы внутри окошка */
+  background-color: #b9adc4;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  max-width: 600px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.15); /* Добавлены две тени для глубины */
+  max-width: 100%; /* Окошко не будет выходить за пределы экрана */
   margin-left: auto;
   margin-right: auto;
 }
 
 .event-details h2 {
   color: #007BFF;
-  margin-bottom: 10px;
+  margin-bottom: 8px; /* Уменьшаем отступ снизу */
+  font-size: 1.2em; /* Уменьшаем размер заголовка для мобильных устройств */
 }
+
 .event-details p {
-  font-size: 1.1em;
-  line-height: 1.6;
+  font-size: 0.9em; /* Уменьшаем размер текста для мобильных устройств */
+  line-height: 1.5; /* Увеличиваем межстрочный интервал для читабельности */
   color: #333;
+  margin: 0; /* Убираем лишние отступы у текста */
 }
 
 .event-image-container {
-  margin-top: 20px;
+  margin-top: 15px; /* Уменьшаем отступ сверху */
   text-align: center;
 }
 
 .event-image {
-  max-width: 100%;
+  max-width: 100%; /* Изображение не будет выходить за пределы экрана */
   height: auto;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
 .label {
   pointer-events: none; /* Чтобы подписи не мешали кликам */
 }
 
+/* Медиа-запросы для очень маленьких экранов (320px) */
+@media (max-width: 320px) {
+  body {
+    padding: 5px; /* Еще больше уменьшаем отступы для очень маленьких экранов */
+  }
+
+  .app {
+    padding: 0 5px; /* Еще больше уменьшаем отступы для очень маленьких экранов */
+  }
+
+  h1 {
+    font-size: 1.3em; /* Еще больше уменьшаем размер заголовка */
+    margin-bottom: 10px; /* Уменьшаем отступ снизу */
+  }
+
+  .event-details {
+    padding: 10px; /* Еще больше уменьшаем отступы внутри окошка */
+    margin-top: 10px; /* Уменьшаем отступ сверху */
+  }
+
+  .event-details h2 {
+    font-size: 1.1em; /* Еще больше уменьшаем размер заголовка */
+    margin-bottom: 5px; /* Уменьшаем отступ снизу */
+  }
+
+  .event-details p {
+    font-size: 0.85em; /* Еще больше уменьшаем размер текста */
+    line-height: 1.4; /* Увеличиваем межстрочный интервал для читабельности */
+  }
+
+  .event-image {
+    max-width: 95%; /* Еще больше уменьшаем ширину изображения */
+  }
+}
